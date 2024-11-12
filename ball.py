@@ -21,8 +21,10 @@ class Ball:
 
     def get_bb(self):
         # fill here
+        return self.x - 10, self.y - 10, self.x + 10, self.y + 10
         pass
 
     def handle_collision(self, group, other):
-        # fill here
+        if group == 'boy:ball':
+            game_world.remove_object(self)
         pass
