@@ -55,4 +55,9 @@ class Zombie:
     def handle_event(self, event):
         pass
 
+    def get_bb(self):
+        # fill here
+        return self.x - 100, self.y - 100, self.x + 100, self.y + 100
+        pass
+
 

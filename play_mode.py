@@ -24,6 +24,8 @@ def handle_events():
 
 def init():
     global boy
+    global balls
+    global zombie
 
     grass = Grass()
     game_world.add_object(grass, 0)
@@ -32,13 +34,19 @@ def init():
     game_world.add_object(boy, 1)
 
     # fill here
-    global balls
     balls = [Ball(random.randint(100, 1600-100), 60, 0) for _ in range(30)]
     game_world.add_objects(balls, 1)
+    zombie = [Zombie() for _ in range(5)]
+    game_world.add_objects(zombie, 1)
 
     game_world.add_collision_pair('boy:ball', boy, None)
+    game_world.add_collision_pair('boy:zombie', boy, None)
     for ball in balls:
         game_world.add_collision_pair('boy:ball', None, ball)
+        game_world.add_collision_pair('zombie:ball', None, ball)
+    for zombies in zombie:
+        game_world.add_collision_pair('boy:zombie', None, zombies)
+        game_world.add_collision_pair('zombie:ball', None, zombies)
 
 
 
